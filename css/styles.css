@@ -388,21 +388,57 @@ dialog[open] {
   clip: rect(0 0 0 0);
 }
 
+/* Address button: pin on the left, two-line address on the right */
 .maps-button {
-  display: inline-block;
-  padding: 9px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  max-width: 100%;
+  padding: 0.6em 1.4em 0.6em 1em;
   background-color: #e99aa7;
   color: #704334;
   border: 1px solid #c6a052;
-  border-radius: 24px;
-  text-decoration: none;
+  border-radius: 999px;
+  text-align: left;
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.2;
+  box-shadow: 0 6px 16px -10px rgba(90, 59, 43, 0.6);
+}
+@media (min-width: 375px) {
+  .maps-button {
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .maps-button {
+    font-size: 17px;
+  }
+}
+
+/* The pin uses location.png as a stencil, so it takes the
+   button's text color instead of plain black */
+.maps-icon {
+  flex: none;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: currentColor;
+  -webkit-mask: url("../server/location.png") center/contain no-repeat;
+  mask: url("../server/location.png") center/contain no-repeat;
+}
+
+.maps-text {
+  display: block;
 }
 
 .maps-button:hover {
   background-color: #f2c1c8;
+}
+
+.maps-button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
 }
 
 .z-link {
