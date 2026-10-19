@@ -1,0 +1,33 @@
+@use "sass:map";
+@use "sass:math";
+
+// ------------------------------------------------------------
+// Screen sizes (mobile first: styles with no breakpoint are for
+// small phones, and each breakpoint adds changes for bigger screens)
+// ------------------------------------------------------------
+$breakpoints: (
+  phone-md: 375px,   // medium phones (iPhone SE, mini, most Androids)
+  phone-lg: 428px,   // large phones (Pro Max, Plus, big Androids)
+  tablet:   768px,   // tablets (iPad, Galaxy Tab)
+  desktop:  1024px,  // laptops and computers
+);
+
+// Usage:  @include bp.up(tablet) { ... }
+@mixin up($name) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+// ------------------------------------------------------------
+// Scaling helper
+// The invite was designed at 520px wide. Write sizes the way you
+// measured them at that width, and size() turns them into cqw units,
+// so they shrink and grow with the illustration on every screen.
+//   size(64)  ->  64px at 520px wide, 40px at 320px wide, etc.
+// ------------------------------------------------------------
+$design-width: 520;
+
+@function size($px) {
+  @return math.div($px, $design-width) * 100cqw;
+}

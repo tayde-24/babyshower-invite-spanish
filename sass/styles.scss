@@ -1,0 +1,874 @@
+@use "_partials/colors" as c;
+@use "_partials/breakpoints" as bp;
+
+// Shortcut so the code below reads size(64) instead of bp.size(64)
+@function size($px) {
+  @return bp.size($px);
+}
+
+$art-w: 928;
+$art-h: 1648;
+
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   Page
+   ============================================================ */
+
+body {
+  margin: 0;
+  padding: 0;                     // phones: the invite fills the screen
+  min-height: 100vh;
+  min-height: 100svh;
+  background: c.$blush;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--brown);
+
+  @include bp.up(tablet) {
+    padding: 40px 24px;
+  }
+
+  @include bp.up(desktop) {
+    padding: 32px;
+  }
+}
+
+/* ============================================================
+   Invitation artwork
+   ============================================================ */
+
+.invitation {
+  position: relative;
+  container-type: inline-size;    // lets everything inside use size()
+  width: min(100%, 520px);
+  aspect-ratio: #{$art-w} / #{$art-h};
+  background: url("../server/illustration.png") center / 100% 100% no-repeat;
+  overflow: hidden;
+
+  // Tablets and computers: show the whole invite on one screen,
+  // never smaller than 360px wide, never bigger than 560px wide
+  @include bp.up(tablet) {
+    width: min(560px, 100%, max(360px, (100vh - 80px) * $art-w / $art-h));
+    width: min(560px, 100%, max(360px, (100svh - 80px) * $art-w / $art-h));
+    box-shadow: 1rem 1rem 4rem #704334;
+  }
+
+  @include bp.up(desktop) {
+    width: min(560px, 100%, max(360px, (100vh - 64px) * $art-w / $art-h));
+    width: min(560px, 100%, max(360px, (100svh - 64px) * $art-w / $art-h));
+  }
+}
+
+/* Text stays editable */
+.invitation-content {
+  position: absolute;
+  top: 16%;
+  left: 25%;
+  width: 66%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 size(20);
+  font-size: size(16);            // makes the browser's default spacing scale too
+}
+
+.heart {
+  width: size(64);
+  height: auto;
+  display: block;
+  margin: size(17) 0 size(-30) size(47);
+}
+
+.title {
+  font-family: "Great Vibes", cursive;
+  font-size: size(48);
+  line-height: 1.2;
+  margin: 0;
+  font-weight: 400;
+  display: inline-block;
+  transform: rotate(-20deg);
+  position: relative;
+  top: size(50);
+  right: size(50);
+}
+
+.arc-title {
+  display: block;
+  width: 95%;
+  margin: size(18) 0 size(-23) -12%;
+  overflow: visible;
+}
+
+.arc-title text {
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.arc-small {
+  width: 100%;
+  margin-bottom: size(-29);
+}
+
+.arc-small .arc-title text {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: size(25);
+  font-weight: 900;
+  letter-spacing: size(2);
+  line-height: 1.7;
+  margin: size(18) size(83) 0 0;
+}
+
+.divider {
+  width: size(188);
+  color: var(--sage);
+  margin: size(2) size(7);
+}
+
+.guest-of-honor {
+  font-family: "Great Vibes", cursive;
+  font-size: size(43);
+  margin: 0 size(72) size(4) 0;
+  line-height: 1.25;
+}
+
+/* Date with a gold stroke on each side, kept on one line */
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: size(4);
+  white-space: nowrap;
+  font-family: "Cormorant Garamond", serif;
+  font-size: size(27);
+  font-weight: 700;
+  letter-spacing: size(2);
+  line-height: 1;
+  margin: size(6) size(67) size(-10) size(-18);
+
+  span {
+    display: flex;
+  }
+}
+
+img.stroke-left,
+img.stroke-right {
+  width: size(15);
+  height: auto;
+  display: block;
+}
+
+.handwritten {
+  font-family: "Caveat", cursive;
+  font-size: size(24);
+  line-height: 2;
+  margin: size(4) 0;
+  font-weight: 500;
+}
+
+.divider-2 {
+  width: size(195);
+  margin: size(-8) 0 0 size(34);
+}
+
+.subtitle-2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: size(18);
+  font-weight: 900;
+  letter-spacing: size(2);
+  line-height: 1.1;
+  margin: size(-2) size(10) 0 0;
+}
+
+.divider-3 {
+  width: size(130);
+  margin: size(-1) size(10) 0 0;
+}
+
+.details {
+  font-family: "Cormorant Garamond", serif;
+  font-size: size(16);
+  font-weight: 600;
+  letter-spacing: size(1);
+  line-height: 1.5;
+  margin: size(6) 0;
+}
+
+.subtitle-3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: size(18);
+  font-weight: 900;
+  letter-spacing: size(2);
+  line-height: 1.4;
+  margin: size(-1) size(11) 0 0;
+  transform: scaleY(1.2);
+}
+
+.rsvp {
+  font-family: "Caveat", cursive;
+  font-size: size(23);
+  line-height: 1.3;
+  margin: size(5) 0;
+}
+
+/* ============================================================
+   RSVP buttons: sit at the bottom of the arch, on the artwork
+   ============================================================ */
+
+.rsvp-bar {
+  margin-top: auto;               // pushes the buttons to the bottom of the arch
+  margin-bottom: size(12);
+  width: 100%;
+  padding-right: size(10);
+  display: flex;
+  justify-content: center;
+}
+
+.overlay {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr; // side by side; "Sorry" gets more room for its longer text
+  gap: size(6);
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  // max() keeps the buttons readable and tappable on small phones
+  padding: max(6px, size(9)) size(6);
+  border: none;
+  border-radius: 999px;
+  font: 600 10.5px / 1.15 "Karla", "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  text-wrap: balance;             // if text wraps, split it evenly (no lonely "it")
+  text-decoration: none;
+  cursor: pointer;
+
+  // Small phones use 10.5px so both buttons fit inside the arch.
+  // From medium phones up, the text grows with the invite.
+  @include bp.up(phone-md) {
+    font-size: max(11px, size(13));
+    padding-inline: size(8);
+  }
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.overlay .btn {
+  box-shadow: 0 size(8) size(24) size(-10) rgba(90, 59, 43, 0.6);
+}
+
+.overlay .btn-yes {
+  box-shadow: 0 size(8) size(24) size(-10) rgba(90, 59, 43, 0.6), inset 0 0 0 1px var(--gold);
+}
+
+.overlay .btn-no {
+  background: rgba(251, 246, 238, 0.92);
+}
+
+.info {
+  grid-column: 1 / -1;            // its own row, under the buttons
+  justify-self: center;
+  background: rgba(251, 246, 238, 0.85);
+  border: none;
+  border-radius: 999px;
+  padding: max(3px, size(4)) size(14);
+  color: var(--cocoa);
+  font: 500 max(11px, size(13)) "Karla", Arial, sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.info:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Hover effects only on devices with a mouse (computers) */
+@media (hover: hover) {
+  .btn,
+  .info,
+  .maps-button {
+    transition: transform 0.15s ease, filter 0.15s ease, background-color 0.2s ease;
+  }
+
+  .btn:hover,
+  .info:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+  }
+}
+
+/* ============================================================
+   "Good to know" panel
+   ============================================================ */
+
+dialog {
+  // Phones: slides up from the bottom like a sheet
+  margin: auto auto 0;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  max-height: 90svh;
+  overflow-y: auto;
+  border: none;
+  border-radius: 28px 28px 0 0;
+  background: var(--ivory);
+  color: var(--cocoa);
+  padding: 28px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+
+  // Tablets and computers: a centered card
+  @include bp.up(tablet) {
+    margin: auto;
+    width: min(480px, 90vw);
+    border-radius: 28px;
+    padding: 32px;
+  }
+}
+
+dialog::backdrop {
+  background: rgba(90, 59, 43, 0.45);
+}
+
+dialog[open] {
+  animation: rise 0.25s ease-out;
+}
+
+.when {
+  margin-top: 6px;
+}
+
+.note {
+  margin: 20px 0;
+  padding: 14px 16px;
+  background: var(--cream);
+  border-left: 3px solid var(--sage);
+  border-radius: 6px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.buttons {
+  display: grid;
+  gap: 10px;
+}
+
+.btn-yes {
+  background: var(--cocoa);
+  color: var(--ivory);
+}
+
+.btn-no {
+  background: transparent;
+  color: var(--cocoa);
+  border: 1.5px solid var(--caramel);
+}
+
+.fallback {
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--caramel);
+}
+
+.fallback a {
+  color: var(--cocoa);
+}
+
+.close {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: var(--caramel);
+  font: 500 15px "Karla", Arial, sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.maps-button {
+  display: inline-block;
+  padding: 9px 20px;
+  background-color: #e99aa7;
+  color: #704334;
+  border: 1px solid #c6a052;
+  border-radius: 24px;
+  text-decoration: none;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.maps-button:hover {
+  background-color: #f2c1c8;
+}
+
+.z-link {
+  width: 50%;
+  max-width: 220px;
+  height: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog[open] {
+    animation: none;
+  }
+
+  .btn:hover,
+  .info:hover {
+    transform: none;
+  }
+}
+
+
+
+
+/* ============================================================
+   Spanish version
+   Spanish lines are longer than the English ones, so these
+   sizes only apply when the page says <html lang="es">.
+   The English invite is not affected.
+   ============================================================ */
+
+html[lang="es"] {
+  // A bit less space under "Baby Shower"
+  .arc-title {
+    margin-bottom: size(-28);
+  }
+
+  // "¡ES NIÑA!": natural spacing instead of being stretched
+  .arc-small {
+    margin-bottom: 0;
+  }
+
+  .arc-small .arc-title {
+    margin-top: 0;
+    margin-bottom: size(-6);
+  }
+
+  .arc-small .arc-title text {
+    font-size: 20px;              // in SVG units, scales with the invite
+    letter-spacing: 0.12em;
+  }
+
+  // "♥ ACOMPÁÑANOS A CELEBRAR ♥" on one line
+  .subtitle {
+    font-size: size(17);
+    letter-spacing: size(1.5);
+    line-height: 1.5;
+    margin: size(4) size(30) size(2) 0;
+    white-space: nowrap;
+  }
+
+  .divider {
+    width: size(160);
+  }
+
+  .guest-of-honor {
+    font-size: size(40);
+    line-height: 1.15;
+    margin: 0 size(40) size(4) 0;
+  }
+
+  // "21 DE NOVIEMBRE" is longer than "NOVEMBER 21"
+  .date {
+    font-size: size(23);
+    letter-spacing: size(1.5);
+    margin: size(4) size(30) size(-12) 0;
+  }
+
+  .handwritten {
+    font-size: size(22);
+    line-height: 1.6;
+  }
+
+  .divider-2 {
+    width: size(170);
+    margin: size(-8) 0 size(2) size(10);
+  }
+
+  .subtitle-2 {
+    font-size: size(15);
+    letter-spacing: size(1.5);
+    line-height: 1.25;
+    margin: 0 size(4) 0 0;
+  }
+
+  .divider-3 {
+    width: size(110);
+    margin: size(2) size(20) 0 0;
+  }
+
+  .subtitle-3 {
+    font-size: size(15);
+    letter-spacing: size(1);
+    line-height: 1.25;
+    margin: size(2) size(4) 0 0;
+    transform: scaleY(1.1);
+  }
+
+  .rsvp-bar {
+    margin-bottom: size(6);
+  }
+}
+
+
+//-------------------- OLD SCSS CODE-------------------------
+
+// @use "_partials/colors" as c;
+
+// * {
+//       box-sizing: border-box;
+//     }
+
+//     body {
+//       margin: 0;
+//       padding: 30px 12px;
+//       min-height: 100vh;
+//       background: c.$blush;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       color: var(--brown);
+//     }
+
+//     /* Invitation artwork */
+//     .invitation {
+//       position: relative;
+//       width: min(100%, 520px);
+//       aspect-ratio: 928 / 1648;
+//       background:
+//         url("../server/illustration.png")
+//         center / 100% 100% no-repeat;
+//       overflow: hidden;
+//       box-shadow: 1rem 1rem 4rem #704334;
+//     }
+
+//     /* Text stays editable */
+//     .invitation-content {
+//       position: absolute;
+//       top: 16%;
+//       left: 25%;
+//       width: 66%;
+//       height: 75%;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       text-align: center;
+//       /* justify-content: space-between; */
+//       padding: 0 20px 0;
+//     }
+
+//     .heart {
+//       width: 64px;
+//       height: auto;
+//       display: block;
+//       margin: 17px 0px -30px 47px;
+//     }
+
+//     .title {
+//       font-family: "Great Vibes", cursive;
+//       /* font-size: clamp(30px, 7.5vw, 52px); */
+//       font-size: 3rem;
+//       line-height: 1.2;
+//       margin: 0;
+//       font-weight: 400;
+//       display: inline-block;
+//       transform: rotate(-20deg);
+//       position: relative;
+//       top:50px;
+//       right: 50px;
+//     }
+
+//     .arc-title {
+//   display: block;
+//   width: 95%;
+//   margin: 18px 0px -23px  -12%;
+//   overflow: visible;
+// }
+// .arc-title text {
+//   font-family: "Great Vibes", cursive;
+//   letter-spacing: 0;
+//   font-weight:700;
+// }
+
+// .arc-small { width: 100%; margin-bottom: -2cqw; }
+// .arc-small .arc-title text {
+//   font-family: "Cormorant Garamond", Georgia, serif;
+// }
+
+//     .subtitle {
+//       font-family: "Cormorant Garamond", serif;
+//       font-size: clamp(10px, 2.5vw, 25px);
+//       font-weight: 900;
+//       letter-spacing: 2px;
+//       line-height: 1.7;
+//       margin: 18px 83px 0 0px;
+//     }
+
+//     .divider {
+//       width: 188px;
+//       color: var(--sage);
+//       margin: 2px 7px;
+//     }
+
+//     .guest-of-honor {
+//       font-family: "Great Vibes", cursive;
+//       font-size: clamp(28px, 6.5vw, 43px);
+//       margin: 0px 72px 4px 0;
+//       line-height: 1.25;
+//     }
+
+//     .date {
+//       font-family: "Cormorant Garamond", serif;
+//       font-size: clamp(19px, 4.5vw, 27px);
+//       font-weight: 700;
+//       letter-spacing: 2px;
+//       margin: 20px 67px 4px -18px;
+//       line-height: 2%;
+//     }
+
+//     img.stroke-left {
+//       width: 15px;
+//       float: left;
+//       margin-top: -14px;
+//       margin-left: 39px;
+//     }
+
+//     img.stroke-right {
+//       width: 15px;
+//       float: right;
+//       margin-top: -14px;
+//       margin-right: -10px;
+//     }
+
+//     .handwritten {
+//       font-family: "Caveat", cursive;
+//       font-size: clamp(17px, 4vw, 24px);
+//       line-height: 2;
+//       margin: 4px 0;
+//       font-weight: 500;
+//     }
+
+//     .divider-2 {
+//       width: 195px;
+//       margin: -8px 0px 0px 34px;
+//     }
+
+//     .subtitle-2 {
+//       font-family: "Cormorant Garamond", serif;
+//       font-size: 18px;
+//       font-weight: 900;
+//       letter-spacing: 2px;
+//       line-height: 1.1;
+//       margin: -2px 10px 0px 0px;
+//     }
+
+//     .divider-3 {
+//       width: 130px;
+//       margin: -1px 10px 0px 0px;
+//     }
+
+//     .details {
+//       font-family: "Cormorant Garamond", serif;
+//       font-size: clamp(12px, 2.8vw, 16px);
+//       font-weight: 600;
+//       letter-spacing: 1px;
+//       line-height: 1.5;
+//       margin: 6px 0;
+//     }
+
+//     .subtitle-3 {
+//       font-family: "Cormorant Garamond", serif;
+//     font-size: 18px;
+//     font-weight: 900;
+//     letter-spacing: 2px;
+//     line-height: 1.4;
+//     margin: -1px 11px 0 0px;
+//     transform: scaleY(1.2);  
+//     }
+
+//     .rsvp {
+//       font-family: "Caveat", cursive;
+//       font-size: clamp(17px, 3.8vw, 23px);
+//       line-height: 1.3;
+//       margin: 5px 0;
+//     }
+
+//     /* RSVP button floating over the bottom of the illustration */
+
+
+    
+//   .rsvp-bar {
+//     position: fixed;
+//     left: 60px;
+//     right: 0;
+//     bottom: 20px;
+//     display: flex;
+//     justify-content: center;
+//     padding: 16px 20px calc(20px + env(safe-area-inset-bottom, 0px));
+//     pointer-events: none;
+//   }
+//   .btn {
+//     display: block;
+//     width: 100%;
+//     max-width: 440px;
+//     padding: 12px 18px;
+//     border: none;
+//     border-radius: 999px;
+//     font: 600 13px "Karla", "Helvetica Neue", Arial, sans-serif;
+//     text-align: center;
+//     text-decoration: none;
+//     cursor: pointer;
+//   }
+//   .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+//   .overlay {
+//     pointer-events: auto;
+//     /* width: 100%; */
+//     width: 13%;
+//     max-width: 440px;
+//     display: grid;
+//     gap: 10px;
+//   }
+//   .overlay .btn { box-shadow: 0 8px 24px -10px rgba(90, 59, 43, 0.6); }
+//   .overlay .btn-yes { box-shadow: 0 8px 24px -10px rgba(90, 59, 43, 0.6), inset 0 0 0 1px var(--gold); }
+//   .overlay .btn-no { background: rgba(251, 246, 238, 0.92); }
+//   .info {
+//     justify-self: center;
+//     background: rgba(251, 246, 238, 0.85);
+//     border: none;
+//     border-radius: 999px;
+//     padding: 6px 14px;
+//     color: var(--cocoa);
+//     font: 500 14px "Karla", Arial, sans-serif;
+//     text-decoration: underline;
+//     cursor: pointer;
+//   }
+//   .info:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+//   /* RSVP panel */
+//   dialog {
+//     margin: auto auto 0;
+//     width: 100%;
+//     max-width: 480px;
+//     max-height: 90vh;
+//     border: none;
+//     border-radius: 28px 28px 0 0;
+//     background: var(--ivory);
+//     color: var(--cocoa);
+//     padding: 28px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+//     text-align: center;
+//   }
+//   dialog::backdrop { background: rgba(90, 59, 43, 0.45); }
+//   dialog[open] { animation: rise 0.25s ease-out; }
+
+//   .when { margin-top: 6px; }
+//   .note {
+//     margin: 20px 0;
+//     padding: 14px 16px;
+//     background: var(--cream);
+//     border-left: 3px solid var(--sage);
+//     border-radius: 6px;
+//     text-align: left;
+//     font-size: 16px;
+//   }
+//   .buttons { display: grid; gap: 10px; }
+//   .btn-yes { background: var(--cocoa); color: var(--ivory); }
+//   .btn-no { background: transparent; color: var(--cocoa); border: 1.5px solid var(--caramel); }
+//   .fallback { margin-top: 14px; font-size: 14px; color: var(--caramel); }
+//   .fallback a { color: var(--cocoa); }
+//   .close {
+//     margin-top: 12px;
+//     background: none;
+//     border: none;
+//     color: var(--caramel);
+//     font: 500 15px "Karla", Arial, sans-serif;
+//     text-decoration: underline;
+//     cursor: pointer;
+//     padding: 8px;
+//   }
+//   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  
+// .maps-button {
+//   display: inline-block;
+//   padding: 9px 20px;
+//   background-color: #e99aa7;
+//   color: #704334;
+//   border: 1px solid #c6a052;
+//   border-radius: 24px;
+//   text-decoration: none;
+//   font-family: "Cormorant Garamond", serif;
+//   font-weight: 600;
+//   font-size: 16px;
+//   transition: background-color 0.2s ease;
+// }
+
+// .maps-button:hover {
+//   background-color: #f2c1c8;
+// }
+
+// .z-link {
+//   width:50%;
+//   height: auto;
+
+// }
+
+// ::-webkit-scrollbar {
+//     width: 0px;
+//     background: transparent; /* make scrollbar transparent */
+// }
+
+//   @keyframes rise { from { transform: translateY(40px); opacity: 0; } }
+//   @media (prefers-reduced-motion: reduce) { dialog[open] { animation: none; } }
+
+
+
+//     @media (max-width: 380px) {
+//       body {
+//         padding: 8px 4px;
+//       }
+
+//       .invitation-content {
+//         left: 24%;
+//         width: 69%;
+//         top: 17%;
+//         height: 74%;
+//       }
+
+//       .subtitle {
+//         letter-spacing: 1px;
+//       }
+//     }

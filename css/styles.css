@@ -1,0 +1,503 @@
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   Page
+   ============================================================ */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #EFC9C4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--brown);
+}
+@media (min-width: 768px) {
+  body {
+    padding: 40px 24px;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    padding: 32px;
+  }
+}
+
+/* ============================================================
+   Invitation artwork
+   ============================================================ */
+.invitation {
+  position: relative;
+  container-type: inline-size;
+  width: min(100%, 520px);
+  aspect-ratio: 928/1648;
+  background: url("../server/illustration.png") center/100% 100% no-repeat;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .invitation {
+    width: min(560px, 100%, max(360px, (100vh - 80px) * 928 / 1648));
+    width: min(560px, 100%, max(360px, (100svh - 80px) * 928 / 1648));
+    box-shadow: 1rem 1rem 4rem #704334;
+  }
+}
+@media (min-width: 1024px) {
+  .invitation {
+    width: min(560px, 100%, max(360px, (100vh - 64px) * 928 / 1648));
+    width: min(560px, 100%, max(360px, (100svh - 64px) * 928 / 1648));
+  }
+}
+
+/* Text stays editable */
+.invitation-content {
+  position: absolute;
+  top: 16%;
+  left: 25%;
+  width: 66%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 3.8461538462cqw;
+  font-size: 3.0769230769cqw;
+}
+
+.heart {
+  width: 12.3076923077cqw;
+  height: auto;
+  display: block;
+  margin: 3.2692307692cqw 0 -5.7692307692cqw 9.0384615385cqw;
+}
+
+.title {
+  font-family: "Great Vibes", cursive;
+  font-size: 9.2307692308cqw;
+  line-height: 1.2;
+  margin: 0;
+  font-weight: 400;
+  display: inline-block;
+  transform: rotate(-20deg);
+  position: relative;
+  top: 9.6153846154cqw;
+  right: 9.6153846154cqw;
+}
+
+.arc-title {
+  display: block;
+  width: 95%;
+  margin: 3.4615384615cqw 0 -4.4230769231cqw -12%;
+  overflow: visible;
+}
+
+.arc-title text {
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.arc-small {
+  width: 100%;
+  margin-bottom: -5.5769230769cqw;
+}
+
+.arc-small .arc-title text {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 4.8076923077cqw;
+  font-weight: 900;
+  letter-spacing: 0.3846153846cqw;
+  line-height: 1.7;
+  margin: 3.4615384615cqw 15.9615384615cqw 0 0;
+}
+
+.divider {
+  width: 36.1538461538cqw;
+  color: var(--sage);
+  margin: 0.3846153846cqw 1.3461538462cqw;
+}
+
+.guest-of-honor {
+  font-family: "Great Vibes", cursive;
+  font-size: 8.2692307692cqw;
+  margin: 0 13.8461538462cqw 0.7692307692cqw 0;
+  line-height: 1.25;
+}
+
+/* Date with a gold stroke on each side, kept on one line */
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7692307692cqw;
+  white-space: nowrap;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 5.1923076923cqw;
+  font-weight: 700;
+  letter-spacing: 0.3846153846cqw;
+  line-height: 1;
+  margin: 1.1538461538cqw 12.8846153846cqw -1.9230769231cqw -3.4615384615cqw;
+}
+.date span {
+  display: flex;
+}
+
+img.stroke-left,
+img.stroke-right {
+  width: 2.8846153846cqw;
+  height: auto;
+  display: block;
+}
+
+.handwritten {
+  font-family: "Caveat", cursive;
+  font-size: 4.6153846154cqw;
+  line-height: 2;
+  margin: 0.7692307692cqw 0;
+  font-weight: 500;
+}
+
+.divider-2 {
+  width: 37.5cqw;
+  margin: -1.5384615385cqw 0 0 6.5384615385cqw;
+}
+
+.subtitle-2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3.4615384615cqw;
+  font-weight: 900;
+  letter-spacing: 0.3846153846cqw;
+  line-height: 1.1;
+  margin: -0.3846153846cqw 1.9230769231cqw 0 0;
+}
+
+.divider-3 {
+  width: 25cqw;
+  margin: -0.1923076923cqw 1.9230769231cqw 0 0;
+}
+
+.details {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3.0769230769cqw;
+  font-weight: 600;
+  letter-spacing: 0.1923076923cqw;
+  line-height: 1.5;
+  margin: 1.1538461538cqw 0;
+}
+
+.subtitle-3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3.4615384615cqw;
+  font-weight: 900;
+  letter-spacing: 0.3846153846cqw;
+  line-height: 1.4;
+  margin: -0.1923076923cqw 2.1153846154cqw 0 0;
+  transform: scaleY(1.2);
+}
+
+.rsvp {
+  font-family: "Caveat", cursive;
+  font-size: 4.4230769231cqw;
+  line-height: 1.3;
+  margin: 0.9615384615cqw 0;
+}
+
+/* ============================================================
+   RSVP buttons: sit at the bottom of the arch, on the artwork
+   ============================================================ */
+.rsvp-bar {
+  margin-top: auto;
+  margin-bottom: 2.3076923077cqw;
+  width: 100%;
+  padding-right: 1.9230769231cqw;
+  display: flex;
+  justify-content: center;
+}
+
+.overlay {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 1.1538461538cqw;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: max(6px, 1.7307692308cqw) 1.1538461538cqw;
+  border: none;
+  border-radius: 999px;
+  font: 600 10.5px/1.15 "Karla", "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  text-wrap: balance;
+  text-decoration: none;
+  cursor: pointer;
+}
+@media (min-width: 375px) {
+  .btn {
+    font-size: max(11px, 2.5cqw);
+    padding-inline: 1.5384615385cqw;
+  }
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.overlay .btn {
+  box-shadow: 0 1.5384615385cqw 4.6153846154cqw -1.9230769231cqw rgba(90, 59, 43, 0.6);
+}
+
+.overlay .btn-yes {
+  box-shadow: 0 1.5384615385cqw 4.6153846154cqw -1.9230769231cqw rgba(90, 59, 43, 0.6), inset 0 0 0 1px var(--gold);
+}
+
+.overlay .btn-no {
+  background: rgba(251, 246, 238, 0.92);
+}
+
+.info {
+  grid-column: 1/-1;
+  justify-self: center;
+  background: rgba(251, 246, 238, 0.85);
+  border: none;
+  border-radius: 999px;
+  padding: max(3px, 0.7692307692cqw) 2.6923076923cqw;
+  color: var(--cocoa);
+  font: 500 max(11px, 2.5cqw) "Karla", Arial, sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.info:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Hover effects only on devices with a mouse (computers) */
+@media (hover: hover) {
+  .btn,
+  .info,
+  .maps-button {
+    transition: transform 0.15s ease, filter 0.15s ease, background-color 0.2s ease;
+  }
+  .btn:hover,
+  .info:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+  }
+}
+/* ============================================================
+   "Good to know" panel
+   ============================================================ */
+dialog {
+  margin: auto auto 0;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  max-height: 90svh;
+  overflow-y: auto;
+  border: none;
+  border-radius: 28px 28px 0 0;
+  background: var(--ivory);
+  color: var(--cocoa);
+  padding: 28px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+}
+@media (min-width: 768px) {
+  dialog {
+    margin: auto;
+    width: min(480px, 90vw);
+    border-radius: 28px;
+    padding: 32px;
+  }
+}
+
+dialog::backdrop {
+  background: rgba(90, 59, 43, 0.45);
+}
+
+dialog[open] {
+  animation: rise 0.25s ease-out;
+}
+
+.when {
+  margin-top: 6px;
+}
+
+.note {
+  margin: 20px 0;
+  padding: 14px 16px;
+  background: var(--cream);
+  border-left: 3px solid var(--sage);
+  border-radius: 6px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.buttons {
+  display: grid;
+  gap: 10px;
+}
+
+.btn-yes {
+  background: var(--cocoa);
+  color: var(--ivory);
+}
+
+.btn-no {
+  background: transparent;
+  color: var(--cocoa);
+  border: 1.5px solid var(--caramel);
+}
+
+.fallback {
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--caramel);
+}
+
+.fallback a {
+  color: var(--cocoa);
+}
+
+.close {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: var(--caramel);
+  font: 500 15px "Karla", Arial, sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.maps-button {
+  display: inline-block;
+  padding: 9px 20px;
+  background-color: #e99aa7;
+  color: #704334;
+  border: 1px solid #c6a052;
+  border-radius: 24px;
+  text-decoration: none;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.maps-button:hover {
+  background-color: #f2c1c8;
+}
+
+.z-link {
+  width: 50%;
+  max-width: 220px;
+  height: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog[open] {
+    animation: none;
+  }
+  .btn:hover,
+  .info:hover {
+    transform: none;
+  }
+}
+/* ============================================================
+   Spanish version
+   Spanish lines are longer than the English ones, so these
+   sizes only apply when the page says <html lang="es">.
+   The English invite is not affected.
+   ============================================================ */
+html[lang=es] .arc-title {
+  margin-bottom: -5.3846153846cqw;
+}
+html[lang=es] .arc-small {
+  margin-bottom: 0;
+}
+html[lang=es] .arc-small .arc-title {
+  margin-top: 0;
+  margin-bottom: -1.1538461538cqw;
+}
+html[lang=es] .arc-small .arc-title text {
+  font-size: 20px;
+  letter-spacing: 0.12em;
+}
+html[lang=es] .subtitle {
+  font-size: 3.2692307692cqw;
+  letter-spacing: 0.2884615385cqw;
+  line-height: 1.5;
+  margin: 0.7692307692cqw 5.7692307692cqw 0.3846153846cqw 0;
+  white-space: nowrap;
+}
+html[lang=es] .divider {
+  width: 30.7692307692cqw;
+}
+html[lang=es] .guest-of-honor {
+  font-size: 7.6923076923cqw;
+  line-height: 1.15;
+  margin: 0 7.6923076923cqw 0.7692307692cqw 0;
+}
+html[lang=es] .date {
+  font-size: 4.4230769231cqw;
+  letter-spacing: 0.2884615385cqw;
+  margin: 0.7692307692cqw 5.7692307692cqw -2.3076923077cqw 0;
+}
+html[lang=es] .handwritten {
+  font-size: 4.2307692308cqw;
+  line-height: 1.6;
+}
+html[lang=es] .divider-2 {
+  width: 32.6923076923cqw;
+  margin: -1.5384615385cqw 0 0.3846153846cqw 1.9230769231cqw;
+}
+html[lang=es] .subtitle-2 {
+  font-size: 2.8846153846cqw;
+  letter-spacing: 0.2884615385cqw;
+  line-height: 1.25;
+  margin: 0 0.7692307692cqw 0 0;
+}
+html[lang=es] .divider-3 {
+  width: 21.1538461538cqw;
+  margin: 0.3846153846cqw 3.8461538462cqw 0 0;
+}
+html[lang=es] .subtitle-3 {
+  font-size: 2.8846153846cqw;
+  letter-spacing: 0.1923076923cqw;
+  line-height: 1.25;
+  margin: 0.3846153846cqw 0.7692307692cqw 0 0;
+  transform: scaleY(1.1);
+}
+html[lang=es] .rsvp-bar {
+  margin-bottom: 1.1538461538cqw;
+}
+
+/*# sourceMappingURL=styles.css.map */

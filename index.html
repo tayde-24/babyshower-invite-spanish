@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <meta name="description" content="Estás invitado al baby shower de Jacky y Josh Jalaty el sábado 21 de noviembre.">
+        <title>Baby Shower de Jacky y Josh</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+        <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    :root {
+      --cream: #f7efe1;
+      --pink: #e99aa7;
+      --brown: #704334;
+      --gold: #c6a052;
+      --sage: #828a70;
+      --ivory: #FBF6EE;
+    --cream: #F3E9DA;
+    --blush: #EFC9C4;
+    --cocoa: #5A3B2B;
+    --caramel: #A9744F;
+    --sage: #9AA388;
+    --gold: #C6A35E;
+    }
+    </style>
+    </head>
+    <body class="body">
+        <main class="invitation" aria-label="Baby shower invitation">
+
+    <section class="invitation-content">
+
+      <div>
+
+        <div>
+         <img class="heart" src="server/heart.png" alt="Hand-drawn brown heart with gold decorative rays"/>
+        </div>
+
+        <svg class="arc-title" viewBox="0 -2 300 120" aria-hidden="true">
+        <path id="arc" d="M 8,55 A 760,760 0 0,1 292,55" fill="none"/>
+          <text fill="#5A3B2B" font-size="48" text-anchor="middle" transform="scale(1 2)">
+          <textPath href="#arc" startOffset="50%">Baby Shower</textPath>
+          </text>
+        </svg>
+
+
+        <!-- <svg class="arc-title" viewBox="0 -2 300 120" aria-hidden="true">
+          <path id="arc" d="M 8,110 A 400,400 0 0,1 292,110" fill="none"/>
+          <text fill="#5A3B2B" font-size="96" text-anchor="middle">
+          <textPath href="#arc" startOffset="50%" textLength="280" lengthAdjust="spacingAndGlyphs">Baby Shower</textPath>
+          </text>
+        </svg> -->
+
+        <p class="arc-small" aria-label="¡Es niña!">
+          <svg class="arc-title" viewBox="0 0 300 40" aria-hidden="true">
+          <path id="arc2" d="M 48,36 A 500,500 0 0,1 252,36" fill="none"/>
+          <text fill="#5A3B2B" font-size="17" font-weight="600" text-anchor="middle">
+            <textPath href="#arc2" startOffset="50%">¡ES NIÑA!</textPath>
+          </text>
+          </svg>
+        </p>
+
+        <p class="subtitle">
+          <span style="color: var(--gold)">♥</span>
+          ACOMPÁÑANOS A CELEBRAR
+          <span style="color: var(--gold)">♥</span>
+        </p>
+
+        <div class="divider">
+          <img class="divider" src="server/divider-leaves-heart.png">
+        </div>
+
+        <h2 class="guest-of-honor">Jacky & Josh Jalaty</h2>
+      </div>
+
+      <div>
+        <p class="date">
+          <span><img src="server/gold-strokes-right.png" class="stroke-left"/></span>
+          21 DE NOVIEMBRE
+          <span><img src="server/gold-strokes-left.png" class="stroke-right"/></span>
+
+        </p>
+        <p class="handwritten">A partir del mediodía</p>
+
+        <div class="divider">
+          <img class="divider-2" src="server/divider-line-pink-heart.png"/>
+        </div>
+
+        <p class="subtitle-2">
+          TAQUERO DESDE EL MEDIODÍA<br>
+          HASTA LAS 3 PM
+        </p>
+      </div>
+
+      <div class="divider">
+        <img class="divider-3" src="server/divider-leaves-flower.png"/>
+      </div>
+
+      <p class="subtitle-3">Por favor, confirma tu asistencia<br>
+        antes de Halloween
+        <br>
+        ¿Estarás allí?
+      </p>
+
+      <div class="rsvp-bar">
+      <div class="overlay">
+        <a class="btn btn-yes" href="sms:+18052851550?&amp;body=%C2%A1Hola%20Katy%21%20Estar%C3%A9%20en%20el%20baby%20shower%20de%20Jacky%20el%2021%20de%20noviembre.%20Me%20llamo%20___%20y%20seremos%20___%20personas.">Sí, estaré allí</a>
+        <a class="btn btn-no" href="sms:+18052851550?&amp;body=%C2%A1Hola%20Katy%21%20Lo%20siento%2C%20no%20podr%C3%A9%20ir%20al%20baby%20shower%20de%20Jacky.%20Me%20llamo%20___.">Lo siento, no puedo ir</a>
+        <button class="info" type="button" onclick="document.getElementById('rsvp').showModal()">Regalos y ubicación</button>
+      </div>
+    </div>
+  </main>
+
+  <dialog id="rsvp" aria-labelledby="rsvp-title">
+    <h2 id="rsvp-title">Información importante</h2>
+    <!-- Replace TIME below with the start time, like 2:00 PM -->
+    <p class="when">Sábado 21 de noviembre, a partir del mediodía<br>
+      <br>
+      <a href=" https://maps.app.goo.gl/EDQ3coKN8r4L7TnR7" target="_blank" rel="noopener noreferrer" class="maps-button">2040 Park Drive<br>Ventura, CA 93003</a>
+      <br><br>
+      Por favor, estaciónate en la calle o en el banco Chase. 
+      <br>
+      <span style="text-decoration: underline;">No hay estacionamiento en el vecindario. </span>
+      <br><br>
+    </p>
+
+
+    <p class="note">Tu presencia es el mejor regalo,
+      pero si deseas hacer un obsequio, aceptan tarjetas de regalo o Zelle,
+      ¡ya que se mudarán pronto! Gracias por ayudarlos a prepararse para la
+      llegada de su pequeña.
+    </p>
+
+    <div>
+      <img class="z-link" src="secret/Zelle-info.png">
+    </div>
+
+
+    <p class="fallback">¿Estás en una computadora? Envíale un mensaje de texto a Katy al <a href="sms:+18052851550">(805) 285-1550</a></p>
+    <button class="close" type="button" onclick="document.getElementById('rsvp').close()">Volver a la invitación</button>
+  </dialog>
+
+  <script>
+    // Tapping the dark area outside the panel also closes it
+    const d = document.getElementById('rsvp');
+    d.addEventListener('click', e => { if (e.target === d) d.close(); });
+  </script>
+
+
+    </section>
+</body>
+</html>
